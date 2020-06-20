@@ -5,8 +5,10 @@ const {database} = require('../config/helpers');
 /* GET home page. */
 router.get('/', function(req, res) {
   database.table('newslist as n').withFields(['n.header',
+  'n.id',
+  'n.category',
   'n.image',
-  'n.description'
+  'n.description',
   ])
   .sort(.1)
   .getAll()
@@ -30,7 +32,7 @@ router.get('/:newsId', function(req, res) {
     database.table('newslist as n').withFields([
     'n.header',
     'n.image',
-    'n.article'
+    'n.description'
     ])
     .filter({'n.id' : newsId})
     .get()
