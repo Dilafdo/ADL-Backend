@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
         if(list){
             res.status(200).json({
                 count: list.length,
-                index: list,
+                newsList: list
             });
         }else{
             res.json({message: 'No data'});
