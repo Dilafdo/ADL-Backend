@@ -30,6 +30,7 @@ router.get('/:newsId', function(req, res) {
     let newsId = req.params.newsId;
     // console.log(newsId);
     database.table('newslist as n').withFields([
+    'n.category',
     'n.header',
     'n.image',
     'n.description'
@@ -43,6 +44,25 @@ router.get('/:newsId', function(req, res) {
             res.json({message: 'No item found with id ${newsId}'});
         }
     }).catch(err => console.log(err));
+});
+
+router.get('/category/:cat', function(req, res) {
+    let cat = req.params.cat;
+    // console.log(newsId);
+    database.table('newslist as n').withFields([
+        'n.header',
+        'n.image',
+        'n.description'
+    ])
+        .filter({'n.category' : cat})
+        .getAll()
+        .then(news => {
+            if(news) {
+                res.status(200).json(news);
+            }else {
+                res.json({message: 'No item found with id ${newsId}'});
+            }
+        }).catch(err => console.log(err));
 });
 
 module.exports = router;
