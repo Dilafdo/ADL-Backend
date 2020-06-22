@@ -48,7 +48,7 @@ router.get('/:newsId', function(req, res) {
 
 router.get('/category/:cat', function(req, res) {
     let cat = req.params.cat;
-    // console.log(newsId);
+    console.log("category log : "+ cat);
     database.table('newslist as n').withFields([
         'n.header',
         'n.image',
@@ -60,7 +60,7 @@ router.get('/category/:cat', function(req, res) {
             if(news) {
                 res.status(200).json(news);
             }else {
-                res.json({message: 'No item found with id ${newsId}'});
+                res.json({message: 'No item found with id ${cat}'});
             }
         }).catch(err => console.log(err));
 });
