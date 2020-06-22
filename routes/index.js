@@ -50,6 +50,7 @@ router.get('/category/:cat', function(req, res) {
     let cat = req.params.cat;
     console.log("category log : "+ cat);
     database.table('newslist as n').withFields([
+        'n.id',
         'n.header',
         'n.image',
         'n.description'
