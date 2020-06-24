@@ -8,10 +8,12 @@ const app = express();
 // import routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const searchRouter = require('./routes/search');
 
 // use routes
 app.use('/api/index', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/search', searchRouter);
 
 
 app.use(cors({
